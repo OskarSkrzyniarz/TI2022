@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <title>Superliga - Bochnia</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Oskar Skrzyniarz" />
+    <meta name="keywords" content="Superliga, Playarena, orlik, piłka nożna" />
+    <meta name="description" content="Nowa liga piłki nożnej sześciosobowej w Bochni" />
+
+    <link rel="stylesheet" href="styleDefault.css" />
+    <link rel="stylesheet" type="text/css" href="styleMin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Oswald'>
+
+    <script src="scriptJS.js"></script>
+    <script src="https://kit.fontawesome.com/2c85a9f05b.js" crossorigin="anonymous"></script>
+  </head>
+  <body onload="social()">
+      <div id="adminPanel">
+        <form id="login" method="POST" action="php/login.php">
+          <label for="password">Hasło:</label>
+          <input id="password" type="password" name="password">
+          <button id="log" type="submit" name="log">ZALOGUJ</button>
+        </form>
+      </div>
+
+      <div id="addTeam">
+        <form id="teamForm" method="POST"  action="php/addTeam.php">
+          <fieldset id="team">
+            <legend>Dodaj drużynę</legend>
+            <label for="teamName">Nazwa drużyny: </label>
+            <input id="teamName" type="text" name="teamName" required>
+            <label id="lblMail" for="email">Adres mailowy: </label>
+            <input id="email" type="text" name="email" required>
+            <fieldset id="players">
+              <p>#</p>
+              <p>NR</p>
+              <p>IMIĘ</p>
+              <p>NAZWISKO</p>
+              <p>WIEK</p>
+              <input id="playerIDLast" type="text" name="playerIDLast" value="1" readOnly>
+              <input id="pNum1" type="number" name="pNum1" min="1" max="100" required>
+              <input id="pName1" type="text" name="pName1" required>
+              <input id="pSurname1" type="text" name="pSurname1" required>
+              <input id="pAge1" type="number" name="pAge1" min="1" max="100" required>
+            </fieldset>
+            <fieldset id="buttons">
+              <button id="addNewPlayer" type="button" onclick="addPlayer()"><i class="fa-solid fa-user-plus"></i></button>
+              <button id="addNewTeam" type="submit" name="addNewTeam"><i class="fa-solid fa-people-group"></i></button>
+              <button id="close" onclick="closeTeamPopUp()" type="button">X</button>
+            </fieldset>
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="topBar" id="start">
+        <div class="logo">
+          <img src="img/logo.png" alt="SUPERLIGA BOCHNIA">
+        </div>
+        <div class="nav">
+          <a href="#medium" class="button" style="grid-row-start: 1;">O LIDZE</a>
+          <a href="#steps" class="button" id="signNav" style="grid-row-start: 1;">ZAPISY</a>
+          <a href="#bottom" class="button" style="grid-row-start: 1;">ZASADY</a>
+        </div>
+        <div class="login" onclick="adminPanel()">
+          <a><i class="fa-solid fa-user-plus"></i></a>
+        </div>
+      </div>
+
+      <div class="pie pie1" onclick="document.body.classList.remove('active')">
+        <div class="pie-color pie-color1"><h1><a href="#bottom">REGUŁY</a></h1></div>
+      </div>
+      <div class="pie pie2" onclick="document.body.classList.remove('active')">
+        <div class="pie-color pie-color2"><h1><a href="#start" id="mainOpt">ZAPISY</a></h1></div>
+      </div>
+      <div class="pie pie3" onclick="document.body.classList.remove('active')">
+        <div class="pie-color pie-color3"><h1><a href="#medium">O LIDZE</a></h1></div>
+      </div>
+      <div class="menu on" id="menu" onclick="document.body.classList.toggle('active')">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="menu off" onclick="document.body.classList.toggle('active')">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+
+      <div class="social" id="fb">
+        <i class="fa-brands fa-facebook"></i>
+        <p>ODWIEDŹ NASZEGO FACEBOOKA</p>
+      </div>
+      <div class="social" id="tw">
+        <i class="fa-brands fa-twitter"></i>
+        <p>SPRAWDŹ NASZE TWEETY</p>
+      </div>
+      <div class="social" id="ig">
+        <i class="fa-brands fa-instagram"></i>
+        <p>OBCZAJ LIGOWEGO IG</p>
+      </div>
+      
+      
+
+      <div id="colorBoxGray"></div>
+      <div id="colorBoxRed"></div>
+
+    <div class="container">
+      <div class="slide" id="top">
+        <h1>DOŁĄCZ DO NASZEJ LIGI JUŻ DZISIAJ</h1>
+        <div id="sign" onclick="addTeamPopUp()">ZAPISZ DRUŻYNĘ</div>
+      </div>
+
+      <img id="legs" src="img/img1.png" alt="Oskar Skrzyniarz, fot. Paweł Pląder">
+        
+      <div class="slide" id="medium">
+        <div id="textbox1">      
+          <h1>PIERWSZA W BOCHNI LIGA ORLIKOWA</h1>
+          <h2>Już w tym roku wchodzimy na wszystkie orliki w Bochni i okolicy,
+              aby razem rywalizować o miano najlepszej drużyny na wschód od Krakowa.
+              Inspirując się takimi ligami jak Playarena lub Miniliga stworzyliśmy
+              <span style="color: #ff016b">SUPERLIGĘ</span>, która od teraz działać będzie w naszej okolicy.
+              Nie ważne ile masz lat czy jakie są twoje umiejętności piłkarskie.
+              <span style="color: #ff016b">Liczy się tylko piłka!</span></h2>
+        </div>
+      </div>
+
+      <div class="slide" id="bottom">
+        <div id="textbox2">      
+          <h1>ZASADY ROZGRYWEK</h1>
+          <h2>Aby wziąć udział w naszych zawodach wystarczy, że zgłosisz
+              drużynę składającą się z <span style="color: #ff016b">minimum 6 zawodników</span>. Wiek i płeć nie
+              są ważne. Zespół możesz zgłosić na tej stronie. Zapisy są w pełni darmowe.
+              Mecze rozgrywane mogą być rozgrywane na orliku, hali, tartanie, trawie w
+              systemie 6 vs 6. Zmiany są nieograniczone i lotne. Rozgrywki mają dwie fazy:
+              ligowa (mecze każdy z każdym) oraz FINAL FOUR, gdzie na koniec najlepsze 4 drużyny
+              zmierzą się w turnieju, który wyłoni <span style="color: #ff016b">mistrza ligi!</span>
+          </h2>
+        </div>
+        <img src="img/slide2.png" alt="Rafał Madej, fot. Paweł Pląder">
+      </div>
+
+      <div class="slide" id="steps">
+        <div class="step" id="step1">
+          <h1>01</h1>
+          <h2>ZBIERZ DRUŻYNĘ</h2>
+          <h3>Nie marnuj czasu! Zbierz znajomych do drużyny.</h3>
+          <i class="fa-solid fa-people-group"></i>
+        </div>
+        <div class="step" id="step2">
+          <h1>02</h1>
+          <h2>ZAPISZ SIĘ</h2>
+          <h3>Wypełnij formularz dostępny na tej stronie i zgłoś zespół!</h3>
+          <i class="fa-solid fa-square-check"></i>
+        </div>
+        <div class="step" id="step3">
+          <h1>03</h1>
+          <h2>GRAJ</h2>
+          <h3>Poczekaj na koniec zapisów i podbij wszytskie orliki!</h3>
+          <i class="fa-solid fa-futbol"></i>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
